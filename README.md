@@ -1,5 +1,6 @@
 ## Setup
-Create a gpg key following steps of **How to generate Two-Factor authentication code from your Linux CLI**
+Create a gpg key following steps of [**How to generate Two-Factor authentication code from your Linux CLI**](#information-about-system-requirements-and-the-encryption)
+[Install dependencies](#dependencies)
 After the key creation create a file .env (from .env.sample) where
 
 - uid: is the email you put in the key
@@ -25,9 +26,13 @@ Where qr-code-file is the png file that contains the QR code that application of
 use:
 
 `./decrypt.key.sh <accountid>`
-    
 
-## Information about system requirements and the encryption
+# dependencies
+- oathtool (or oath-toolkit)
+- gpgv2
+- zbar (or zbar-tools)
+
+# Information about system requirements and the encryption
 I do not wish to use Google Authenticator or Authy app that generates 2 step verification (2FA) codes on my iOS/Android phone. Is there any way I can produce 2FA codes from Linux command line for popular sites such as Gmail, Twitter, Facebook, Amazon and more?  
 
 The mobile apps generate secure 2 step verification codes to protect your online accounts from hackers. You get an additional layer of security. In addition to your password, you need to input 2FA codes for each login. This page explains how to use oathtool OTPs (one-time password) on Linux to secure your Gmail and other online accounts. Instead of waiting for text messages, get verification codes for free from the oathtool Linux command.
