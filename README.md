@@ -1,7 +1,33 @@
-Taken from https://www.techolac.com/linux/use-oathtool-linux-command-line-for-2-step-verification-2fa/
+## Setup
+Create a gpg key following steps of **How to generate Two-Factor authentication code from your Linux CLI**
+After the key creation create a file .env (from .env.sample) where
+
+- uid: is the email you put in the key
+- kid: is the number that appears when you run the command:
+`gpg --list-secret-keys --keyid-format LONG`
+e.g.: ssb   rsa4096/XX1X11XX11X1X11X
+*kid* would be XX1X11XX11X1X11X
 
 
+create accounts using either:
 
+`./create.sh <accountid> <topt_key>`
+
+or
+
+`./create.sh <accountid> <qr-code-file>`
+
+Where qr-code-file is the png file that contains the QR code that application offers to scan the topt key.
+
+
+## Obtain a code for an account:
+
+use:
+
+`./decrypt.key.sh <accountid>`
+    
+
+## Information about system requirements and the encryption
 I do not wish to use Google Authenticator or Authy app that generates 2 step verification (2FA) codes on my iOS/Android phone. Is there any way I can produce 2FA codes from Linux command line for popular sites such as Gmail, Twitter, Facebook, Amazon and more?  
 
 The mobile apps generate secure 2 step verification codes to protect your online accounts from hackers. You get an additional layer of security. In addition to your password, you need to input 2FA codes for each login. This page explains how to use oathtool OTPs (one-time password) on Linux to secure your Gmail and other online accounts. Instead of waiting for text messages, get verification codes for free from the oathtool Linux command.
@@ -160,3 +186,9 @@ You can repeat the above process for any services that display the totp secret a
 
 The main advantage of Linux command line is that you can easily backup your ~/.2fa/ directory and keys. Your totp secrets/keys are always encrypted and password protected by gpg2\. Mobile apps such as Google Authenticator usually do not allow you to sync or copy secrets/keys for security reasons. So if you lost phone or switch phone, you wouldn’t be able to login into the account. This set up is simple and easy to backup/restore as long as you remember your gpg2 passphrase. I strongly recommend that you enable full disk encryption (FDE) too. Next time I will show you how to use GUI apps for the same purpose.
 
+
+
+## info 
+
+- https://www.techolac.com/linux/use-oathtool-linux-command-line-for-2-step-verification-2fa/
+- https://www.techinformant.in/create-read-qrbarcode-linux-terminal/
